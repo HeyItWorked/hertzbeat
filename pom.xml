@@ -659,6 +659,24 @@
                             </rules>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ban-vulnerable-xerces</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <exclude>xerces:xercesImpl:(,2.12.2)</exclude>
+                                    </excludes>
+                                    <message>Vulnerable xercesImpl detected! Versions below 2.12.2 are banned (CVE-2022-23437). Check dependencyManagement.</message>
+                                </bannedDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <!-- java code style check -->
